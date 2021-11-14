@@ -8,7 +8,7 @@ namespace YLunch.Domain.Services.UserServices
     public interface IUserService
     {
         Task<ICollection<UserReadDto>> GetAllUsers();
-        Task<UserAsCustomerDetailsReadDto> GetAsCustomerById(string id);
+        Task<UserAsCustomerDetailsReadDto> GetCustomerById(string id);
         Task DeleteUserByUsername(string username);
     }
 }

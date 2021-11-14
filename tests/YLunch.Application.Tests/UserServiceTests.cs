@@ -45,13 +45,13 @@ namespace YLunch.Application.Tests
         }
 
         [Fact]
-        public async Task GetAsCustomerById_Should_Return_A_Customer_Based_On_Input_Id()
+        public async Task GetCustomerById_Should_Return_A_Customer_Based_On_Input_Id()
         {
             // Arrange
             var id = UsersMock.CUSTOMER.Id;
 
             // Act
-            var actual = await _userService.GetAsCustomerById(id);
+            var actual = await _userService.GetCustomerById(id);
 
             // Assert
             var user = await _context.Users.FindAsync(id);

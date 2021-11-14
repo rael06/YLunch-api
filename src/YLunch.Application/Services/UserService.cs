@@ -26,9 +26,9 @@ namespace YLunch.Application.Services
             return users.Select(x => new UserReadDto(x)).ToList();
         }
 
-        public async Task<UserAsCustomerDetailsReadDto> GetAsCustomerById(string id)
+        public async Task<UserAsCustomerDetailsReadDto> GetCustomerById(string id)
         {
-            User user = await _userRepository.GetAsCustomerById(id);
+            var user = await _userRepository.GetCustomerById(id);
             return new UserAsCustomerDetailsReadDto(user);
         }
 

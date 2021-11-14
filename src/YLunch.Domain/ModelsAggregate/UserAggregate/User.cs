@@ -87,7 +87,7 @@ namespace YLunch.Domain.ModelsAggregate.UserAggregate
                 Firstname = userCreationDto.Firstname,
                 Email = userCreationDto.UserName,
                 PhoneNumber = userCreationDto.PhoneNumber,
-                CreationDateTime = DateTime.Now,
+                CreationDateTime = DateTime.Now
             };
             user.Customer = Customer.Create(user.Id);
             return user;

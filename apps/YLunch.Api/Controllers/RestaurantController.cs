@@ -129,7 +129,7 @@ namespace YLunch.Api.Controllers
         {
             try
             {
-                var customer = await _userService.GetAsCustomerById(customerId);
+                var customer = await _userService.GetCustomerById(customerId);
                 return Ok(customer);
             }
             catch (NotFoundException e)

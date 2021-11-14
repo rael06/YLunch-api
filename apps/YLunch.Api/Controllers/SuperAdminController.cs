@@ -40,8 +40,8 @@ namespace YLunch.Api.Controllers
             return Ok(await _userService.GetAllUsers());
         }
 
-        [HttpDelete("delete-user")]
-        public async Task<IActionResult> DeleteUserByUsername([FromQuery] string username)
+        [HttpDelete("delete-user/{username}")]
+        public async Task<IActionResult> DeleteUserByUsername(string username)
         {
             try
             {

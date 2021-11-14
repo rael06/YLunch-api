@@ -68,7 +68,7 @@ namespace YLunch.Infrastructure.Database.Repositories
                 .ToListAsync();
         }
 
-        public async Task<User> GetAsCustomerById(string id)
+        public async Task<User> GetCustomerById(string id)
         {
             var user = await _context.Users
                 .Include(x => x.Customer)
