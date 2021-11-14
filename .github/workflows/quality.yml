@@ -8,8 +8,7 @@ on:
       - '!master'
   pull_request:
     branches:
-      - '**'
-      - '!master'
+      - 'master'
 
 jobs:
   build_and_test:
