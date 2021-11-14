@@ -1,8 +1,11 @@
+using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using YLunch.Api.Core;
+using YLunch.Api.Core.Response;
 using YLunch.Domain.ModelsAggregate.UserAggregate;
 using YLunch.Domain.ModelsAggregate.UserAggregate.Roles;
 using YLunch.Domain.Services.Database.Repositories;
@@ -35,6 +38,21 @@ namespace YLunch.Api.Controllers
         public async Task<IActionResult> GetAllUsers()
         {
             return Ok(await _userService.GetAllUsers());
+        }
+
+        [HttpDelete("delete-user")]
+        public async Task<IActionResult> DeleteUserByUsername([FromQuery] string username)
+        {
+            try
+            {
+                await _userService.DeleteUserByUsername(username);
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new Response {Status = ResponseStatus.Error, Message = e.Message});
+            }
         }
 
         [HttpGet("get-all-restaurants")]

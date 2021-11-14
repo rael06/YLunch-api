@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using YLunch.Application.Exceptions;
 using YLunch.Domain.DTO.UserModels;
 using YLunch.Domain.ModelsAggregate.UserAggregate;
 using YLunch.Domain.Services.Database.Repositories;
@@ -29,6 +30,16 @@ namespace YLunch.Application.Services
         {
             User user = await _userRepository.GetAsCustomerById(id);
             return new UserAsCustomerDetailsReadDto(user);
+        }
+
+        public async Task DeleteUserByUsername(string username)
+        {
+            var user = await _userRepository.GetFullUser(username);
+            if (user is null)
+            {
+                throw new NotFoundException($"User with username: '{username}' not found");
+            }
+            await _userRepository.Delete(user);
         }
     }
 }
